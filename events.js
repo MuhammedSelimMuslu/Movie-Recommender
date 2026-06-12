@@ -129,3 +129,25 @@ document.getElementById('btn-reset').addEventListener('click', () => {
 // PAGINATION
 prevPageBtn.addEventListener('click', () => { if (state.page > 1) { state.page--; fetchMovies(); } });
 nextPageBtn.addEventListener('click', () => { if (state.page < state.totalPages) { state.page++; fetchMovies(); } });
+
+// MODAL
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// INIT
+document.addEventListener('DOMContentLoaded', () => {
+  // Set initial genre tags from default mood (happy)
+  ['35', '10751'].forEach(id => {
+    state.selectedGenres.add(id);
+    const tag = document.querySelector(`.tag[data-id="${id}"]`);
+    if (tag) tag.classList.add('active');
+  });
+
+  if (isValidApiKey()) {
+    fetchMovies();
+  } else {
+    // Show placeholder cards when no API key
+    renderPlaceholderCards();
+  }
+});
