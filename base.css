@@ -1,0 +1,58 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Arkaplan renk skalasÄ± */
+  --bg:        #0b0b0f;
+  --bg2:       #111118;
+  --bg3:       #1a1a25;
+  --surface:   #1e1e2c;
+  --border:    rgba(255, 255, 255, 0.07);
+
+  /* Vurgu renkleri - sinema altÄ±n sarÄ±sÄ± + turuncu */
+  --accent:    #e8c468;
+  --accent2:   #f07040;
+
+  /* Metin */
+  --text:      #e8e8f0;
+  --muted:     #888899;
+
+  /* Durum renkleri */
+  --danger:    #d5c8c8;
+  --green:     #5ec878;
+
+  /* Genel radius deÄŸeri */
+  --radius:    14px;
+
+  /* Fontlar - Ã¼Ã§ farklÄ± font ailesi kullandÄ±k */
+  --font-display: 'Bebas Neue', sans-serif;    /* bÃ¼yÃ¼k baÅŸlÄ±klar iÃ§in */
+  --font-serif:   'DM Serif Display', serif;   /* hero ve section baÅŸlÄ±klarÄ± */
+  --font-body:    'DM Sans', sans-serif;        /* genel metin */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
