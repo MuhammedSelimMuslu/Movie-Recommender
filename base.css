@@ -114,3 +114,124 @@ a:hover { text-decoration: underline; }
   color: var(--accent);
   text-decoration: none;
 }
+
+.api-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--green);
+  background: rgba(94, 200, 120, 0.1);
+  border: 1px solid rgba(94, 200, 120, 0.2);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+}
+
+.api-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 50% at 70% 50%, rgba(232, 196, 104, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(240, 112, 64, 0.05) 0%, transparent 60%),
+    var(--bg);
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  right: -1rem;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 22rem);
+  color: rgba(255, 255, 255, 0.018);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  max-width: 420px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--accent);
+  color: #0b0b0f;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  transition: all 0.25s;
+}
+
+.hero-cta:hover {
+  background: #f0d484;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(232, 196, 104, 0.3);
+  text-decoration: none;
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: 3rem;
+  right: 2.5rem;
+  display: flex;
+  gap: 2.5rem;
+  z-index: 2;
+}
