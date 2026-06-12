@@ -73,3 +73,59 @@ document.querySelectorAll('.rt-btn').forEach(btn => {
     state.runtimeMax = parseInt(btn.dataset.max);
   });
 });
+
+// SEARCH BUTTON
+document.getElementById('btn-search').addEventListener('click', () => {
+  state.textSearch = document.getElementById('text-search').value.trim();
+  state.page = 1;
+  fetchMovies();
+  document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('text-search').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-search').click();
+});
+
+// RESET
+document.getElementById('btn-reset').addEventListener('click', () => {
+  // Mood
+  document.querySelectorAll('.mood-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  state.activeMood = 'happy'; state.moodGenres = '35,10751';
+
+  // Genres
+  state.selectedGenres.clear();
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+
+  // Year
+  yearMin.value = 1990; yearMax.value = 2024;
+  state.yearMin = 1990; state.yearMax = 2024;
+  updateYearLabels();
+
+  // Rating
+  state.minRating = 6.0; ratingDisplay.textContent = '6.0';
+  stars.forEach((s, i) => s.classList.toggle('active', i < 3));
+
+  // Sort
+  document.querySelectorAll('input[name="sort"]')[0].checked = true;
+  state.sortBy = 'popularity.desc';
+  document.querySelectorAll('.radio-opt').forEach((o, i) => o.classList.toggle('active', i === 0));
+
+  // Language
+  document.getElementById('language-select').value = '';
+  state.language = '';
+
+  // Runtime
+  document.querySelectorAll('.rt-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  state.runtimeMin = 0; state.runtimeMax = 9999;
+
+  // Text
+  document.getElementById('text-search').value = '';
+  state.textSearch = '';
+
+  state.page = 1;
+  fetchMovies();
+});
+
+// PAGINATION
+prevPageBtn.addEventListener('click', () => { if (state.page > 1) { state.page--; fetchMovies(); } });
+nextPageBtn.addEventListener('click', () => { if (state.page < state.totalPages) { state.page++; fetchMovies(); } });
