@@ -35,3 +35,119 @@
 .mood-emoji { font-size: 2.2rem; line-height: 1; }
 .mood-name  { font-weight: 700; font-size: 0.95rem; }
 .mood-sub   { font-size: 0.72rem; color: var(--muted); }
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.filter-row-two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.filter-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.filter-header i {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.35rem 0.85rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.tag.active {
+  background: var(--accent);
+  color: #0b0b0f;
+  border-color: var(--accent);
+  font-weight: 700;
+}
+
+.year-range { width: 100%; }
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.dual-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--bg3);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 8px rgba(232, 196, 104, 0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: none;
+}
+

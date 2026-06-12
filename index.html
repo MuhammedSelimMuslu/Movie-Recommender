@@ -122,6 +122,56 @@
       </button>
     </div>
   </section>
-  
+
+  <section class="section" id="filter-section">
+    <div class="section-label">02 &mdash; Advanced Filters</div>
+    <h2 class="section-title">Fine-tune your <em>search</em></h2>
+
+    <div class="filters-wrapper">
+      <div class="filter-card">
+        <div class="filter-header">
+          <i class="fa-solid fa-masks-theater"></i>
+          <span>Genre</span>
+        </div>
+        <div class="genre-tags" id="genre-tags">
+          <button class="tag" data-id="28">Action</button>
+          <button class="tag" data-id="12">Adventure</button>
+          <button class="tag" data-id="16">Animation</button>
+          <button class="tag" data-id="35">Comedy</button>
+          <button class="tag" data-id="80">Crime</button>
+          <button class="tag" data-id="99">Documentary</button>
+          <button class="tag" data-id="18">Drama</button>
+          <button class="tag" data-id="10751">Family</button>
+          <button class="tag" data-id="14">Fantasy</button>
+          <button class="tag" data-id="36">History</button>
+          <button class="tag" data-id="27">Horror</button>
+          <button class="tag" data-id="10402">Music</button>
+          <button class="tag" data-id="9648">Mystery</button>
+          <button class="tag" data-id="10749">Romance</button>
+          <button class="tag" data-id="878">Science Fiction</button>
+          <button class="tag" data-id="53">Thriller</button>
+          <button class="tag" data-id="10752">War</button>
+          <button class="tag" data-id="37">Western</button>
+        </div>
+      </div>
+
+      <div class="filter-row-two">
+        <div class="filter-card">
+          <div class="filter-header">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Release Year</span>
+          </div>
+          <div class="year-range">
+            <div class="range-labels">
+              <span id="year-min-label">1990</span>
+              <span id="year-max-label">2024</span>
+            </div>
+            <div class="dual-range">
+              <input type="range" id="year-min" min="1950" max="2024" value="1990" step="1"/>
+              <input type="range" id="year-max" min="1950" max="2024" value="2024" step="1"/>
+            </div>
+          </div>
+        </div>
+        
 </body>
 </html>
