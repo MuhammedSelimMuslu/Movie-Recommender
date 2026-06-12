@@ -172,6 +172,101 @@
             </div>
           </div>
         </div>
-        
+
+        <div class="filter-card">
+          <div class="filter-header">
+            <i class="fa-solid fa-star"></i>
+            <span>Minimum Rating</span>
+          </div>
+          <div class="rating-selector">
+            <div class="rating-stars" id="rating-stars">
+              <span class="star active" data-val="2">★</span>
+              <span class="star active" data-val="4">★</span>
+              <span class="star active" data-val="6">★</span>
+              <span class="star" data-val="8">★</span>
+              <span class="star" data-val="10">★</span>
+            </div>
+            <div class="rating-value">
+              <span id="rating-display">6.0</span> / 10
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-header">
+            <i class="fa-solid fa-arrow-up-wide-short"></i>
+            <span>Sort By</span>
+          </div>
+          <div class="sort-options">
+            <label class="radio-opt active">
+              <input type="radio" name="sort" value="popularity.desc" checked/>
+              <span>Most Popular</span>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="sort" value="vote_average.desc"/>
+              <span>Top Rated</span>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="sort" value="release_date.desc"/>
+              <span>Newest First</span>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="sort" value="revenue.desc"/>
+              <span>Box Office</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-row-two">
+        <div class="filter-card">
+          <div class="filter-header">
+            <i class="fa-solid fa-language"></i>
+            <span>Language</span>
+          </div>
+          <select id="language-select" class="styled-select">
+            <option value="">Any Language</option>
+            <option value="en">English</option>
+            <option value="tr">Turkish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+          </select>
+        </div>
+
+        <div class="filter-card">
+          <div class="filter-header">
+            <i class="fa-solid fa-clock"></i>
+            <span>Runtime</span>
+          </div>
+          <div class="runtime-btns">
+            <button class="rt-btn active" data-min="0" data-max="9999">Any</button>
+            <button class="rt-btn" data-min="0" data-max="90">Short (&lt;90m)</button>
+            <button class="rt-btn" data-min="90" data-max="120">Medium</button>
+            <button class="rt-btn" data-min="120" data-max="180">Long (&gt;2h)</button>
+            <button class="rt-btn" data-min="180" data-max="9999">Epic (&gt;3h)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-bar-row">
+      <div class="text-search-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="text-search" placeholder="Search by title or keyword&hellip;"/>
+      </div>
+      <button class="btn-search" id="btn-search">
+        <i class="fa-solid fa-clapperboard"></i> Find Movies
+      </button>
+      <button class="btn-reset" id="btn-reset">
+        <i class="fa-solid fa-rotate-left"></i> Reset All
+      </button>
+    </div>
+  </section>
+
+  
 </body>
 </html>
