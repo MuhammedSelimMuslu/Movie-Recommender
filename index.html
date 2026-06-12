@@ -267,6 +267,42 @@
     </div>
   </section>
 
+  <section class="section" id="results-section">
+    <div class="results-header">
+      <div>
+        <div class="section-label">03 &mdash; Results</div>
+        <h2 class="section-title" id="results-title">Your <em>recommendations</em></h2>
+      </div>
+      <div class="results-meta">
+        <span id="results-count" class="count-badge">0 films found</span>
+      </div>
+    </div>
+
+    <div class="loader-wrap" id="loader" style="display:none;">
+      <div class="film-loader">
+        <div class="reel"></div>
+        <p>Fetching movies from the database&hellip;</p>
+      </div>
+    </div>
+
+    <div class="error-wrap" id="error-wrap" style="display:none;">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p id="error-msg">Something went wrong.</p>
+    </div>
+
+    <div class="movie-grid" id="movie-grid"></div>
+
+    <div class="pagination" id="pagination" style="display:none;">
+      <button id="prev-page" class="page-btn">
+        <i class="fa-solid fa-chevron-left"></i> Prev
+      </button>
+      <span id="page-info">Page 1 of 1</span>
+      <button id="next-page" class="page-btn">
+        Next <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
   
 </body>
 </html>
