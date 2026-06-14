@@ -118,3 +118,70 @@ async function fetchMovieDetail(id) {
     </div>`;
   }
 }
+
+function renderModal(movie, credits, videos) {
+  const backdropURL = movie.backdrop_path ? `${IMG_BASE}w1280${movie.backdrop_path}` : null;
+  const posterURL   = movie.poster_path   ? `${IMG_BASE}w342${movie.poster_path}`    : null;
+  const year        = movie.release_date  ? movie.release_date.slice(0, 4) : 'N/A';
+  const runtime     = movie.runtime       ? `${Math.floor(movie.runtime/60)}h ${movie.runtime%60}m` : 'N/A';
+  const rating      = movie.vote_average  ? movie.vote_average.toFixed(1) : 'N/A';
+  const votes       = movie.vote_count    ? movie.vote_count.toLocaleString() : '0';
+  const budget      = movie.budget        ? `$${(movie.budget/1e6).toFixed(0)}M` : 'N/A';
+  const revenue     = movie.revenue       ? `$${(movie.revenue/1e6).toFixed(0)}M` : 'N/A';
+  const genres      = (movie.genres || []).map(g => g.name).join(' · ') || 'N/A';
+  const tagline     = movie.tagline       ? `<p class="modal-tagline">"${escapeHtml(movie.tagline)}"</p>` : '';
+
+  const cast = (credits.cast || []).slice(0, 8);
+  const director = (credits.crew || []).find(c => c.job === 'Director');
+
+  const trailer = (videos.results || []).find(v => v.type === 'Trailer' && v.site === 'YouTube');
+
+  const ratingClass = parseFloat(rating) >= 8 ? 'green' : parseFloat(rating) >= 6 ? 'highlight' : '';
+
+  modalInner.innerHTML = `
+    ${backdropURL
+      ? `<img class="modal-backdrop" src="${backdropURL}" alt="backdrop"/>`
+      : `<div style="height:140px;background:var(--bg3);"></div>`}
+    <div class="modal-content">
+      <div class="modal-header-row">
+        ${posterURL
+          ? `<img class="modal-poster" src="${posterURL}" alt="${escapeHtml(movie.title)}"/>`
+          : `<div class="modal-poster" style="display:flex;align-items:center;justify-content:center;background:var(--bg3);font-size:2rem;">🎥</div>`}
+        <div class="modal-info">
+          <h2 class="modal-title">${escapeHtml(movie.title)}</h2>
+          ${tagline}
+          <div class="modal-meta-row">
+            <span class="meta-chip ${ratingClass}"><i class="fa-solid fa-star"></i> ${rating} <small style="opacity:.7">(${votes})</small></span>
+            <span class="meta-chip"><i class="fa-solid fa-calendar"></i> ${year}</span>
+            <span class="meta-chip"><i class="fa-solid fa-clock"></i> ${runtime}</span>
+            <span class="meta-chip"><i class="fa-solid fa-masks-theater"></i> ${genres}</span>
+            ${movie.status ? `<span class="meta-chip"><i class="fa-solid fa-circle-check"></i> ${movie.status}</span>` : ''}
+          </div>
+          <div class="modal-meta-row" style="margin-bottom:0;">
+            ${budget !== 'N/A' ? `<span class="meta-chip"><i class="fa-solid fa-sack-dollar"></i> Budget: ${budget}</span>` : ''}
+            ${revenue !== 'N/A' ? `<span class="meta-chip"><i class="fa-solid fa-chart-line"></i> Revenue: ${revenue}</span>` : ''}
+            ${director ? `<span class="meta-chip"><i class="fa-solid fa-video"></i> ${escapeHtml(director.name)}</span>` : ''}
+          </div>
+          ${trailer ? `
+            <a class="trailer-btn" href="https://www.youtube.com/watch?v=${trailer.key}" target="_blank">
+              <i class="fa-brands fa-youtube"></i> Watch Trailer
+            </a>` : ''}
+        </div>
+      </div>
+
+      <p class="modal-section-title">Overview</p>
+      <p class="modal-overview">${escapeHtml(movie.overview || 'No overview available.')}</p>
+
+      ${cast.length > 0 ? `
+        <p class="modal-section-title">Cast</p>
+        <div class="cast-row">
+          ${cast.map(c => `<span class="cast-chip">${escapeHtml(c.name)}</span>`).join('')}
+        </div>` : ''}
+
+      ${(movie.production_companies || []).length > 0 ? `
+        <p class="modal-section-title">Production</p>
+        <div class="cast-row">
+          ${movie.production_companies.slice(0,4).map(c => `<span class="cast-chip" style="color:var(--muted)">${escapeHtml(c.name)}</span>`).join('')}
+        </div>` : ''}
+    </div>`;
+}
